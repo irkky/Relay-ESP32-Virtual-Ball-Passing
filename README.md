@@ -11,9 +11,6 @@
   <img alt="License: add a license before reuse" src="https://img.shields.io/badge/license-not%20specified-lightgrey?style=for-the-badge">
 </p>
 
-> [!IMPORTANT]
-> **Before publishing this repository publicly:** the current configuration and README contain real participant names and Wi-Fi station MAC addresses. Replace them with consented display names and your own board MACs, or keep the repository private. MAC addresses are device identifiers; never publish them without the owners’ consent.
-
 ### ✨ At a glance
 
 | 👥 Players | 📡 Network | 🖥️ Dashboard | 🧩 Setup |
