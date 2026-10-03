@@ -127,21 +127,26 @@ PlatformIO builds the Arduino sketch folder directly. Arduino IDE opens `Virtual
 
 ```mermaid
 sequenceDiagram
-  participant A as Active slave A
-  participant B as Adjacent slave B
-  participant M as Master
-  Note over A: Surrender ownership; green LED off
-  A->>B: BALL_PASS(epoch, nextSequence, A, B, direction)
-  Note over B: STAGED; never green yet
-  B->>A: BALL_RECEIVED (application ACK)
-  B->>M: READY (repeated until committed)
-  A->>M: RELEASE (only after receiver ACK)
-  Note over M: Validate current holder, neighbor, session and sequence
-  M->>A: SYNC(new holder, new sequence)
-  M->>B: GRANT(new sequence)
-  Note over B: ACTIVE; green
-  B->>M: GRANT_ACK
-  M->>M: Report BALL_RECEIVED to dashboard
+    participant A as Active slave A
+    participant B as Adjacent slave B
+    participant M as Master
+
+    Note over A: Surrender ownership - green LED off
+    A->>B: BALL_PASS - epoch, nextSequence, A, B, direction
+
+    Note over B: STAGED - never green yet
+    B->>A: BALL_RECEIVED - application ACK
+    B->>M: READY - repeated until committed
+
+    A->>M: RELEASE - only after receiver ACK
+
+    Note over M: Validate current holder, neighbor, session and sequence
+    M->>A: SYNC - new holder, new sequence
+    M->>B: GRANT - new sequence
+
+    Note over B: ACTIVE - green
+    B->>M: GRANT_ACK
+    M->>M: Report BALL_RECEIVED to dashboard
 ```
 
 `READY` and `RELEASE` can arrive in either order. Missing messages are retried. Duplicate packets repeat the acknowledgement without repeating activation. A slave records the sequence it surrendered, so a delayed grant cannot turn its old ball back on. `SYNC` updates knowledge and retires old transactions but **cannot activate a player**.
