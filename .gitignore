@@ -1,0 +1,30 @@
+﻿# PlatformIO
+.pio/
+
+# Local tools and generated build/package output
+.tools/
+build/
+dist/
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local credentials and private configuration
+.env
+.env.*
+!.env.example
+secrets/
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

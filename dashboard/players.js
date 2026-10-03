@@ -1,0 +1,67 @@
+// Generated; edit config/players.json
+window.PLAYERS = [
+  {
+    "id": 1,
+    "name": "Ramya G",
+    "role": "MASTER",
+    "mac": "02:00:00:00:00:01",
+    "left": 0,
+    "right": 0
+  },
+  {
+    "id": 2,
+    "name": "Jyothi.K",
+    "role": "SLAVE",
+    "mac": "02:00:00:00:00:02",
+    "left": 0,
+    "right": 3
+  },
+  {
+    "id": 3,
+    "name": "ABHISHEK KUMAR",
+    "role": "SLAVE",
+    "mac": "02:00:00:00:00:03",
+    "left": 2,
+    "right": 4
+  },
+  {
+    "id": 4,
+    "name": "Durgamani R",
+    "role": "SLAVE",
+    "mac": "02:00:00:00:00:04",
+    "left": 3,
+    "right": 5
+  },
+  {
+    "id": 5,
+    "name": "Shreesathya",
+    "role": "SLAVE",
+    "mac": "02:00:00:00:00:05",
+    "left": 4,
+    "right": 6
+  },
+  {
+    "id": 6,
+    "name": "Sowjanya N",
+    "role": "SLAVE",
+    "mac": "02:00:00:00:00:06",
+    "left": 5,
+    "right": 7
+  },
+  {
+    "id": 7,
+    "name": "Rishab Kumar Kannaujia",
+    "role": "SLAVE",
+    "mac": "02:00:00:00:00:07",
+    "left": 6,
+    "right": 8
+  },
+  {
+    "id": 8,
+    "name": "Sanjeevini",
+    "role": "SLAVE",
+    "mac": "02:00:00:00:00:08",
+    "left": 7,
+    "right": 0
+  }
+];

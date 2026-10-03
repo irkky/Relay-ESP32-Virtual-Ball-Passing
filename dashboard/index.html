@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Relay · Virtual Ball</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="players.js"></script><script defer src="serial.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#"><span class="brand-icon">↔</span> relay<span class="brand-dot">.</span></a><span class="top-label">VIRTUAL BALL / ESP32</span><span id="connection" class="pill"><i></i> Master disconnected</span></header>
+  <main>
+    <section class="heading"><div><p class="eyebrow">EIGHT PLAYERS. ONE BALL.</p><h1>Keep it moving<span>.</span></h1><p class="subtitle">Choose a starting player. Pass left or right. Follow the ball.</p></div><button id="connect" class="primary">Connect Master <span>↗</span></button></section>
+    <div id="notice" class="notice" role="status">Connect Ramya’s Master ESP32 by USB to begin. All seven slaves must be powered on.</div>
+    <section class="metrics" aria-label="Game overview">
+      <article class="metric current"><p>CURRENT BALL</p><div><span class="ball-orb"></span><h2 id="holder">Waiting to play</h2></div><small id="holder-note">No active session</small></article>
+      <article class="metric"><p>PLAYERS ONLINE</p><h2><span id="online">0</span><span class="denominator"> / 8</span></h2><small id="online-note">Awaiting Master</small></article>
+      <article class="metric"><p>GAME STATUS</p><h2 id="game-status">Disconnected</h2><small id="session">Session — · Pass —</small></article>
+    </section>
+    <div class="workspace">
+      <section class="arena panel"><div class="panel-title"><div><p class="eyebrow">THE PLAYING FIELD</p><h2>Follow the chain</h2></div><span class="live-label" id="live">○ OFFLINE</span></div>
+        <div class="legend"><span><i class="green"></i> Ball holder</span><span><i class="blue"></i> Transfer pending</span><span><i></i> Waiting</span></div>
+        <div id="master-node"></div><div class="gateway-caption">MASTER STARTS WITH ANY SLAVE <span>↓</span></div>
+        <div id="chain" class="chain" aria-label="Physical slave chain"></div>
+        <div class="arena-foot"><span>← LEFT NEIGHBOR</span><span>ONE BALL · ADJACENT PASSES ONLY</span><span>RIGHT NEIGHBOR →</span></div>
+      </section>
+      <aside>
+        <section class="panel controls"><div class="panel-title"><h2>Game controls</h2><span class="section-number">01</span></div><label for="starting-player">Starting player</label><select id="starting-player"></select><p class="helper">The Master can throw the first ball to any player in the chain.</p><button id="start" class="primary full" disabled>Start game <span>▶</span></button><div class="button-row"><button id="reset" disabled>↺ Reset game</button><button id="retry" disabled>Retry transfer</button></div><p class="helper" id="reset-status">Waiting for connection.</p></section>
+        <section class="panel health"><div class="panel-title"><h2>Communication</h2><span class="section-number">02</span></div><dl><div><dt>Transport</dt><dd>USB Serial + ESP-NOW</dd></div><div><dt>ESP-NOW</dt><dd id="espnow">—</dd></div><div><dt>Last packet</dt><dd id="last-packet">—</dd></div><div><dt>Last ACK</dt><dd id="last-ack">—</dd></div><div><dt>Game errors</dt><dd id="errors">0</dd></div><div><dt>Radio failures / rejected</dt><dd id="radio-errors">0 / 0</dd></div><div><dt>Queue drops</dt><dd id="queue-drops">0</dd></div></dl></section>
+        <section class="panel howto"><p class="eyebrow">YOUR NEXT MOVE</p><h3>Green means go.</h3><p>Center your joystick, then move it left or right once. A blue light means the transfer is waiting for confirmation.</p></section>
+      </aside>
+    </div>
+    <section class="panel timeline"><div class="panel-title"><div><p class="eyebrow">LIVE ACTIVITY</p><h2>Every pass, in order</h2></div><button id="clear-log" class="quiet">Clear log</button></div><ol id="events" aria-live="polite" aria-relevant="additions"><li class="empty-log">Your game timeline will appear here.</li></ol></section>
+    <footer><span>RELAY / VIRTUAL BALL PASSING</span><span>7 slave nodes · 1 Master · No internet required</span></footer>
+  </main>
+</body>
+</html>
